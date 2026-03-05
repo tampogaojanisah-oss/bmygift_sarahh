@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MARCHOTTIE</title>
+<style>
+/* General */
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:pink;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* Pages */
+.page{
+    display:none;
+    padding:50px;
+}
+
+.active{
+    display:block;
+}
+
+/* Cards */
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    display:inline-block;
+}
+
+/* Buttons */
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#ff4da6;
+    color:white;
+    cursor:pointer;
+    margin:5px;
+}
+
+button:hover{
+    background:#ff1a8c;
+}
+
+/* Teddy bears */
+.teddy{
+    width:60px;
+    margin:5px;
+}
+
+/* Message page */
+textarea{
+    width:300px;
+    height:150px;
+    font-size:16px;
+    border-radius:10px;
+    padding:10px;
+    margin-top:10px;
+}
+
+/* Photo */
+.photo{
+    width:200px;
+    border-radius:15px;
+    margin:15px 0;
+}
+
+/* Video */
+.video{
+    width:300px;
+    border-radius:15px;
+    margin:15px 0;
+}
+
+/* Floating pics */
+.floating{
+    position:fixed;
+    width:80px;
+    border-radius:15px;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    50%{transform:translateY(50vh);}
+    100%{transform:translateY(100vh);}
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:10px;
+    height:10px;
+    top:-10px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(100vh) rotate(720deg);
+    }
+}
+</style>
+</head>
+   
+<body>
+
+<!-- Page 1: Forgiveness -->
+<div id="page1" class="page active">
+    <h1 style="font-family: times new roman; text-align:center; font-size: 50";>🎂 Happy Birthday MY BABY POTATOOE 🎉</h1>
+    <div class="card">
+		 <img src="photo.jpg" class="photo">
+        <p>Will you forgive me?</p>
+        <button onclick="yesForgive()">Yes 💖</button>
+        <button onclick="noForgive()">No ❌</button>
+    </div>
+</div>
+
+<!-- Page 2: Thank you page -->
+<div id="page2" class="page">
+    <div class="card">
+        <img src="baby.jpg" class="photo">
+        <p>Thank you for forgiving me! 💗</p>
+        <p><b>Want to read my greeting?</p></p>
+        <button onclick="yesGreeting()">Yes 💌</button>
+        <button onclick="noGreeting()">No ❌</button>
+		
+    </div>
+</div>
+
+<!-- Page 3: Message + picture + video + confetti -->
+<div id="page3" class="page">
+    <div class="card">
+        <h2> PAMAHAWI KO MAG PULI KA</h2>
+
+        <!-- Photo -->
+        <img src="ourphoto.jpg" class="photo">
+        <p style="font-family: times new roman";>💗MY PRETTY BFF💗</p>
+        <textarea>
+ HAPPIEST BDAY PUPPY, amo lang ni anay akon gift saimo. i wish you all the best in the world!. I hope someday you will find a good man who will love you as much as i love you (a rich man). I am so greatful to have u as my bestfriend, so wala kana choice kundu maging freind ko asta mag tigulang ka HAHAHA. SORRY kay late nakoo, but i made all this to make bawi to you. i miss u babe puli nadi. i love you my pretty bff. MWAAA
+ </textarea>
+        <br><br>
+        <button onclick="alert('Happy Birthday Sarah! 🎉')">Send Love ❤️</button>
+    </div>
+
+    <!-- Floating pictures -->
+    <img src="twin.jpg" class="floating" style="left:8%; animation-duration:12s;">
+	<img src="pic.jpg" class="floating" style="left:18%; animation-duration:9s;">
+	<img src="heeeh.jpg" class="floating" style="left:30%;">
+	<img src="baby.jpg" class="floating" style="left:70%;">
+    <img src="nicole.jpg" class="floating" style="left:90%; animation-duration:12s;">
+    <img src="beach.jpg" class="floating" style="left:80%; animation-duration:9s;">
+</div>
+
+<!-- MUSIC ADDED HERE -->
+<audio id="music" loop>
+    <source src="319598f1-377e-4d18-9865-1902d5eb687d.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Page 1 logic
+function yesForgive(){
+    document.getElementById("page1").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+}
+function noForgive(){
+    alert("di moko lab hay?💔");
+}
+
+// Page 2 logic
+function yesGreeting(){
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+    document.getElementById("music").play();
+    createConfetti();
+}
+function noGreeting(){
+    alert("sige na baby please🥺");
+}
+
+// Confetti
+function createConfetti(){
+    for(let i=0;i<80;i++){
+        let conf=document.createElement("div");
+        conf.className="confetti";
+        conf.style.left=Math.random()*100+"vw";
+        conf.style.backgroundColor="hsl("+Math.random()*360+",100%,50%)";
+        conf.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(conf);
+    }
+}
+</script>
+
+</body>
+</html>
